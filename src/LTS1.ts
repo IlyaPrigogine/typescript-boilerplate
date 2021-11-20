@@ -1,35 +1,37 @@
 export const flag = true;
 export const flagN = 1;
-export const flagStr  = 'hello';
+export const flagStr = 'hello';
+
 export enum flagColor {
   Red,
   Pink,
   Blue,
 }
+
 export enum flagColorStr {
   Red = 'red',
   Pink = 'pink',
   Blue = 'blue'
 }
 
-export const flagArray: number[] = [1,2,3];
-export const flagArray2 : Array<number> = [1,2,3];
-export const flagTuple : [string,number] = ['john',35];
+export const flagArray: number[] = [1, 2, 3];
+export const flagArray2: Array<number> = [1, 2, 3];
+export const flagTuple: [string, number] = ['john', 35];
 
 export const flagSym = Symbol('hello');
 
 export const hello = (name: string) => console.log('hello ' + name);
 
-export const name1 : string | number = 'john';
-export const name2 : string | number = 35;
+export const name1: string | number = 'john';
+export const name2: string | number = 35;
 
 
 const someValue: any = 'this is a string';
-export const strLength : number = (<string>someValue).length;
-export const strLength2 : number = (someValue as string).length;
+export const strLength: number = (<string>someValue).length;
+export const strLength2: number = (someValue as string).length;
 
-type flag1 = { x: number};
-type flag2 = flag1 & {y: string};
+type flag1 = { x: number };
+type flag2 = flag1 & { y: string };
 export const flag3: flag2 = {
   x: 1,
   y: 'hello',
@@ -48,7 +50,8 @@ export const double = (input: string | number | boolean) => {
 export class Animal {
   name!: string;
 }
-export class Bird extends  Animal {
+
+export class Bird extends Animal {
   fly !: number;
 }
 
@@ -63,8 +66,8 @@ export const getName = (animal: Animal) => {
 
 
 // eslint-disable-next-line @typescript-eslint/ban-types
-export const isObject = (value : unknown): value is object => {
-  return typeof  value === 'object' && value !== null;
+export const isObject = (value: unknown): value is object => {
+  return typeof value === 'object' && value !== null;
 }
 
 export const getHello = (name: string) => `hello,${name}`;
