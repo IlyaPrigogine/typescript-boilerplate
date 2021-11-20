@@ -11,7 +11,7 @@ import {
   flagStr,
   flagSym,
   flagTuple, getName,
-  hello, name1, name2, strLength
+  hello, isObject, name1, name2, strLength
 } from "../LTS1";
 
 test('the data is peanut butter', () => {
@@ -81,6 +81,12 @@ it ('test getName() in LTS1', () => {
   inBird.fly = 36;
   expect(getName(inBird)).toBe(37);
 })
+
+it ('test isObject() in LTS1 ',()=> {
+  expect(isObject('abc')).toBe(false);
+})
+
+
 
 
 

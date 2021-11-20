@@ -61,3 +61,10 @@ export const getName = (animal: Animal) => {
   return animal;
 }
 
+
+// eslint-disable-next-line @typescript-eslint/ban-types
+export const isObject = (value : unknown): value is object => {
+  return typeof  value === 'object' && value !== null;
+}
+
+export const getHello = (name: string) => `hello,${name}`;
