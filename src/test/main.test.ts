@@ -1,5 +1,16 @@
 import { greet } from '../main'
-import {flag, flagArray, flagArray2, flagColor, flagColorStr, flagN, flagStr} from "../learnTS001";
+import {
+  flag,
+  flagArray,
+  flagArray2,
+  flagColor,
+  flagColorStr,
+  flagN,
+  flagStr,
+  flagSym,
+  flagTuple,
+  hello
+} from "../LTS1";
 
 test('the data is peanut butter', () => {
   expect(1).toBe(1)
@@ -24,4 +35,18 @@ test ('test basic types', () => {
 it ('test array types: ',() => {
   expect(flagArray.length).toBe(3);
   expect(flagArray2[1]).toBe(2);
+})
+
+it ('test tuple type', () => {
+  expect(flagTuple[0]).toBe('john');
+  expect(flagTuple[1]).toBe(35);
+})
+
+it ('test Symbol type', () => {
+  console.log(flagSym.toString());
+});
+
+it ('test hello() in LTS1',() => {
+  hello('world');
+  hello('john');
 })
