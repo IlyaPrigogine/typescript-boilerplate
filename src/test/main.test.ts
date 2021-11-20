@@ -1,6 +1,6 @@
 import { greet } from '../main'
 import {
-  Animal, Bird,
+  Animal, Bird, countNumber,
   double,
   flag, flag3,
   flagArray,
@@ -10,8 +10,8 @@ import {
   flagN,
   flagStr,
   flagSym,
-  flagTuple, getName,
-  hello, isObject, name1, name2, strLength
+  flagTuple, funcDefaultParameter, getHello, getName,
+  hello, isObject, name1, name2, printNameString, strLength
 } from "../LTS1";
 
 test('the data is peanut butter', () => {
@@ -85,6 +85,42 @@ it ('test getName() in LTS1', () => {
 it ('test isObject() in LTS1 ',()=> {
   expect(isObject('abc')).toBe(false);
 })
+
+it ('test getHello() in LTS1', () => {
+  expect(getHello('world')).toBe('hello,world');
+  expect(getHello('john')).toBe('hello,john');
+  expect(getHello('')).toBe('hello,');
+});
+
+it ('test countNumber() in LTS1',() => {
+  expect(countNumber(1,2)).toBe(3);
+  expect(countNumber(3,-1)).toBe(2);
+})
+
+it ('test printNameString() in LTS1', () => {
+  expect(printNameString('hello',36)).toBe(`hello,36`);
+  expect(printNameString('john',18)).toBe(`john,18`);
+})
+
+it ('test funcDefaultParameter() in LTS1', ()=>{
+  expect(funcDefaultParameter('may')).toBe('may,16');
+  expect(funcDefaultParameter('amanda',32)).toBe('amanda,32');
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

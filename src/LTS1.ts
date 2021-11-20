@@ -68,3 +68,21 @@ export const isObject = (value : unknown): value is object => {
 }
 
 export const getHello = (name: string) => `hello,${name}`;
+
+type tSumFunc = (x: number, y: number) => number;
+export const countNumber: tSumFunc = (a,b) => a + b;
+
+export const printNameString = (name: string, age?: number) => `${name},${age}`;
+export const funcDefaultParameter = (name: string, age = 16) => `${name},${age}`;
+
+
+
+
+
+
+
+
+
+
+
+
