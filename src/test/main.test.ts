@@ -10,8 +10,8 @@ import {
   flagN,
   flagStr,
   flagSym,
-  flagTuple, funcDefaultParameter, getHello, getName,
-  hello, isObject, name1, name2, printNameString, strLength
+  flagTuple, funcAttr, funcDefaultParameter, funcSum, getHello, getName,
+  hello, isObject, name1, name2, obj, Person, Person2, printNameString, strLength, Student, User
 } from "../LTS1";
 
 test('the data is peanut butter', () => {
@@ -97,15 +97,66 @@ it ('test countNumber() in LTS1',() => {
   expect(countNumber(3,-1)).toBe(2);
 })
 
-it ('test printNameString() in LTS1', () => {
-  expect(printNameString('hello',36)).toBe(`hello,36`);
-  expect(printNameString('john',18)).toBe(`john,18`);
+it('test printNameString() in LTS1', () => {
+  expect(printNameString('hello', 36)).toBe(`hello,36`);
+  expect(printNameString('john', 18)).toBe(`john,18`);
 })
 
-it ('test funcDefaultParameter() in LTS1', ()=>{
+it('test funcDefaultParameter() in LTS1', () => {
   expect(funcDefaultParameter('may')).toBe('may,16');
-  expect(funcDefaultParameter('amanda',32)).toBe('amanda,32');
+  expect(funcDefaultParameter('amanda', 32)).toBe('amanda,32');
 })
+
+it('test funcSum() in lts1', () => {
+  expect(funcSum(1, 2, 3)).toBe(6);
+  expect(funcSum(-1, 0, 1)).toBe(0);
+  expect(funcSum(1.2, 2, 2.8)).toBe(6);
+})
+
+it('test funcAttr() in lts1', () => {
+  funcAttr('hahaha');
+  expect(obj.name).toBe('hahaha');
+
+  funcAttr(9);
+  expect(obj.age).toBe(9);
+})
+
+it('test class Person in lts1', () => {
+  const p1 = new Person('hello');
+  expect(p1.getName()).toBe('hello');
+})
+
+it('test class User in lts1', () => {
+  const u1 = new User('john');
+  expect(u1.name).toBe('john');
+
+  u1.name = 'ada';
+  expect(u1.name).toBe('ada');
+});
+
+it('test class Person2 in lts1', () => {
+  const p1 = new Person2('john', 36);
+  expect(p1.name).toBe('john');
+  expect(p1.age).toBe(36);
+
+  p1.name = 'ada';
+  p1.age = 16;
+  expect(p1.name).toBe('ada');
+  expect(p1.age).toBe(16);
+})
+
+it('test class Student in lts1', () => {
+  const s1 = new Student('john', 36, 0);
+  expect(s1.name).toBe('john');
+  expect(s1.age).toBe(36);
+  expect(s1.no).toBe(0);
+
+  const s2 = new Student('ada', 16);
+  expect(s2.name).toBe('ada');
+  expect(s2.age).toBe(16);
+  expect(s2.no).toBeUndefined();
+})
+
 
 
 
