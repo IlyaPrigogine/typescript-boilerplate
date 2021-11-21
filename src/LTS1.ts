@@ -224,6 +224,43 @@ export const rsa: encrypt = (key, value) => {
   return key + "///" + value;
 }
 
+export interface IUserAttr {
+  [index: number]: string;
+}
+
+export interface IUserObj {
+  [index: string]: string;
+}
+
+interface IAnimal2 {
+  name: string;
+
+  eat(str: string): string;
+}
+
+export class CDog implements IAnimal2 {
+  constructor(_name: string) {
+    this._name = _name;
+  }
+
+  private _name: string;
+
+  get name(): string {
+    return this._name;
+  }
+
+  set name(value: string) {
+    this._name = value;
+  }
+
+  eat() {
+    return `${this._name} eat`
+  }
+}
+
+export const constArray: number[] = [1, 2, 3, 4];
+export const roa: ReadonlyArray<number> = [1, 2, 3, 4];
+
 
 
 

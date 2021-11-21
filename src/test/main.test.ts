@@ -33,8 +33,10 @@ import {
   Speakable,
   strLength,
   Student,
-  User
+  User, IUserAttr, IUserObj, CDog, constArray, roa
 } from "../LTS1";
+import {CWorker} from "../CWorker";
+import {CPerson, CUser} from "../PersonSpeakSpanish";
 
 
 test('the data is peanut butter', () => {
@@ -255,9 +257,74 @@ it('test printName2() func in lts1', () => {
   expect(printName2(obj2)).toBe('john---undefined');
 })
 
-it('test func md5() && rsa()', () => {
+it('test func md5() && rsa() in lts1', () => {
   expect(md5('john', 'jack')).toBe('johnjack');
   expect(rsa('john', 'jack')).toBe('john///jack');
+})
+
+it('test interface UserAttr in lts1', () => {
+  const arr: IUserAttr = ['x', 'y'];
+  expect(arr[0]).toBe('x');
+  expect(arr[1]).toBe('y');
+})
+
+it('test interface userObj in lts1', () => {
+  const obj: IUserObj = {name: 'john', age: '36'} /* age MUST be string not number*/
+  expect(obj.name).toBe('john');
+  expect(obj.age).toBe('36');
+})
+
+it('test class CDog in lts1', () => {
+  const mydog = new CDog('mary');
+  expect(mydog.name).toBe('mary');
+  expect(mydog.eat()).toBe('mary eat');
+
+  mydog.name = 'john';
+  expect(mydog.name).toBe('john');
+  expect(mydog.eat()).toBe('john eat');
+});
+
+it('test roa in lts1', () => {
+  constArray.forEach((value, index) => {
+    expect(value).toBe(index + 1)
+  });
+  constArray[0] = 3;
+
+  roa.forEach((value, index) => {
+    expect(value).toBe(index + 1)
+  });
+  // roa[0] = 3; error because roa is readonlyArray;
+});
+
+it('test CWorker in lts2', () => {
+  const myWorker = new CWorker('john');
+  expect(myWorker.eat()).toBe('eat');
+  expect(myWorker.work()).toBe('work');
+  expect(myWorker.name).toBe('john');
+  expect(myWorker.coding('hello,world')).toBe('john writes hello,world');
+
+  myWorker.name = 'mary';
+  expect(myWorker.name).toBe('mary');
+  expect(myWorker.coding('welcome')).toBe('mary writes welcome');
+})
+
+it('test CPerson in src/PersonSpeakSpanish.ts', () => {
+  const myPerson = new CPerson();
+  expect(myPerson.speak()).toBe('person');
+  expect(myPerson.speakSpanish()).toBe('speakSpanish');
+})
+
+it('test CUser in src/PersonSpeakSpanish.ts', () => {
+  const myUser = new CUser('john');
+  expect(myUser.name).toBe('john');
+  expect(myUser.speak()).toBe('john speak');
+  expect(myUser.speakSpanish()).toBe('john speak spanish');
+
+  myUser.name = 'mary'
+  expect(myUser.name).toBe('mary');
+  expect(myUser.speak()).toBe('mary speak');
+  expect(myUser.speakSpanish()).toBe('mary speak spanish');
+
 })
 
 
