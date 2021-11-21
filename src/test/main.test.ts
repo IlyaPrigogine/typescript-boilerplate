@@ -1,8 +1,14 @@
-import { greet } from '../main'
+import {greet} from '../main'
 import {
-  Animal, Bird, countNumber,
+  aAnimal,
+  Animal,
+  Bird,
+  Cat,
+  countNumber,
+  Dog,
   double,
-  flag, flag3,
+  flag,
+  flag3,
   flagArray,
   flagArray2,
   flagColor,
@@ -10,9 +16,26 @@ import {
   flagN,
   flagStr,
   flagSym,
-  flagTuple, funcAttr, funcDefaultParameter, funcSum, getHello, getName,
-  hello, isObject, name1, name2, obj, Person, Person2, printNameString, strLength, Student, User
+  flagTuple,
+  funcAttr,
+  funcDefaultParameter,
+  funcSum,
+  getHello,
+  getName,
+  hello,
+  isObject, md5,
+  name1,
+  name2,
+  obj,
+  Person,
+  Person2, printLabel, printName, printName2,
+  printNameString, rsa,
+  Speakable,
+  strLength,
+  Student,
+  User
 } from "../LTS1";
+
 
 test('the data is peanut butter', () => {
   expect(1).toBe(1)
@@ -156,6 +179,107 @@ it('test class Student in lts1', () => {
   expect(s2.age).toBe(16);
   expect(s2.no).toBeUndefined();
 })
+
+it('test Cat class in lts1', () => {
+  const animal = new Cat();
+  expect(animal.speak()).toBe('hello cat');
+});
+
+it('test Cat && Dog class in lts1', () => {
+  const cat = new Cat();
+  const dog = new Dog();
+  const animals: aAnimal[] = [dog, cat];
+  animals.forEach((value) => {
+    console.log(value.speak());
+  });
+})
+
+const speakman: Speakable = {
+  speak(): void {
+    /**/
+  },
+  name: 'hello',
+  lng: 'en'
+}
+const speakman2: Speakable = {
+  speak(): void {
+    /**/
+  },
+  lng: 'cn'
+};
+
+it('test speakman && speakman2 in lts1', () => {
+
+  expect(speakman.name).toBe('hello');
+  expect(speakman.lng).toBe('en');
+  expect(speakman2.name).toBeUndefined;
+  expect(speakman2.lng).toBe('cn');
+})
+
+it('test printLabel in lts1', () => {
+  const myObj = {size: 10, label: 'size 10 object'};
+  const myObj2 = {name: 'john', age: 36, label: 'Welcome John, ur age is 36'};
+  expect(printLabel(myObj)).toBe('size 10 object');
+  expect(printLabel(myObj2)).toBe('Welcome John, ur age is 36');
+})
+
+it('test printName() func in lts1', () => {
+  const obj = {
+    "age": 22,
+    firstName: 'steve',
+    secondName: 'mary'
+  };
+  expect(printName(obj)).toBe('steve---mary');
+
+  const obj2 = {
+    size: 10,
+    label: 'size 10 object',
+    firstName: 'john',
+    secondName: 'kevin',
+  }
+  expect(printName(obj2)).toBe('john---kevin');
+})
+
+it('test printName2() func in lts1', () => {
+  const obj = {
+    age: 22,
+    firstName: 'steve',
+    secondName: 'mary'
+  };
+  expect(printName2(obj)).toBe('steve---mary');
+
+  const obj2 = {
+    age: 36,
+    firstName: 'john'
+  };
+  expect(printName2(obj2)).toBe('john---undefined');
+})
+
+it('test func md5() && rsa()', () => {
+  expect(md5('john', 'jack')).toBe('johnjack');
+  expect(rsa('john', 'jack')).toBe('john///jack');
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

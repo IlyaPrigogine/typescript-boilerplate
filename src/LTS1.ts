@@ -168,5 +168,77 @@ export class Student extends Person2 {
   }
 }
 
+export abstract class aAnimal {
+  name!: string;
+
+  abstract speak(): string;
+}
+
+export class Cat extends aAnimal {
+  speak() {
+    return 'hello cat'
+  }
+}
+
+export class Dog extends aAnimal {
+  speak() {
+    return 'hello dog'
+  }
+}
+
+export interface Speakable {
+  readonly lng: string;
+  name?: string;
+
+  speak(): void;
+}
+
+export const printLabel = (labelledObj: { label: string }) => labelledObj.label;
+
+/* used for printName() func */
+interface IFullName {
+  firstName: string;
+  secondName: string;
+}
+
+export const printName = (obj: IFullName) => `${obj.firstName}---${obj.secondName}`;
+
+interface IFullName2 {
+  firstName: string;
+  secondName?: string;
+}
+
+export const printName2 = (obj: IFullName2) => `${obj.firstName}---${obj.secondName}`;
+
+interface encrypt {
+  (key: string, value: string): string;
+}
+
+export const md5: encrypt = (key, value) => {
+  /* fixme: add code for md5 algorithm */
+  return key + value;
+}
+
+export const rsa: encrypt = (key, value) => {
+  /* fixme: add code for rsa */
+  return key + "///" + value;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
