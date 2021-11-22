@@ -261,7 +261,24 @@ export class CDog implements IAnimal2 {
 export const constArray: number[] = [1, 2, 3, 4];
 export const roa: ReadonlyArray<number> = [1, 2, 3, 4];
 
+interface discount {
+  (price: number): number;
+}
 
+export const cost: discount = (price): number => {
+  return price * 0.8
+}
+
+export class CAnimal {
+  constructor(public name: string) {
+  }
+}
+
+interface WithNameClass {
+  new (name: string): CAnimal;
+}
+
+export const createAnimal = (clazz: WithNameClass, name: string) => new clazz(name);
 
 
 

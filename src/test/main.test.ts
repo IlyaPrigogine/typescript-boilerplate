@@ -21,7 +21,6 @@ import {
   funcDefaultParameter,
   funcSum,
   getHello,
-  getName,
   hello,
   isObject, md5,
   name1,
@@ -33,10 +32,21 @@ import {
   Speakable,
   strLength,
   Student,
-  User, IUserAttr, IUserObj, CDog, constArray, roa
+  User, IUserAttr, IUserObj, CDog, constArray, roa, cost, createAnimal, CAnimal,getName,
 } from "../LTS1";
 import {CWorker} from "../CWorker";
 import {CPerson, CUser} from "../PersonSpeakSpanish";
+import {
+  cart,
+  CMyArray,
+  createArray,
+  createArrayStr,
+  getAge,
+  getGender,
+  getName_G,
+  loggingIdentity,
+  swap
+} from "../LTS_Generics";
 
 
 test('the data is peanut butter', () => {
@@ -325,6 +335,76 @@ it('test CUser in src/PersonSpeakSpanish.ts', () => {
   expect(myUser.speak()).toBe('mary speak');
   expect(myUser.speakSpanish()).toBe('mary speak spanish');
 
+});
+
+it ('test func cost() in src/LTS1.ts', () => {
+  expect(cost(3)).toBeCloseTo(2.4);
+  expect(cost(0)).toBeCloseTo(0);
+  expect(cost(10)).toBeCloseTo(8);
+})
+
+it ('test createAnimal() in lts1', async () => {
+  const a = createAnimal(CAnimal,'hello');
+  expect(a.name).toBe('hello');
+  expect(typeof a).toBe('object');
+});
+
+it ('test createArray() func in LTSG', async() => {
+  expect(createArray<string>(3,'x').length).toBe(3);
+  expect(createArray<string>(3,'x').join('')).toBe('xxx');
+  expect(createArray<string>(5,'y').join('')).toBe('yyyyy');
+  expect(createArray(6,6).join('')).toBe('666666');
+
+  console.log(createArray(100,'-').join(''));
+})
+
+it ('test swap() func in LTSG', () => {
+  expect(swap([7,6]).join('')).toBe('67');
+  expect(swap([7,'seven']).join('')).toBe('seven7');
+  expect(swap([6,'six']).join('')).toBe('six6');
+})
+
+it ('test loggingIdentity() func in LTSG', () => {
+  expect(loggingIdentity('hello')).toBe('hello');
+  expect(loggingIdentity([1,2,3]).join('-')).toBe('1-2-3');
+  expect(loggingIdentity(['steve','john','mary','jack']).join('/')).toBe('' +
+    'steve/john/mary/jack');
+})
+
+it ('test cart const in LTSG', () => {
+  expect(cart.list.length).toBe(2);
+  expect(cart.list[0].name).toBe('john');
+  expect(cart.list[1].age).toBe(18);
+})
+
+it ('test Class myArray', () => {
+  const myArray = new CMyArray([1,2,4,3]);
+  expect(myArray.getMax()).toBe(4);
+
+  myArray.add(6);
+  expect(myArray.list.length).toBe(5);
+  expect(myArray.getMax()).toBe(6);
+
+  myArray.add(0);
+  expect(myArray.list.length).toBe(6);
+  expect(myArray.getMax()).toBe(6);
+})
+
+it ('test func createArrayStr() in LTSG', () => {
+  expect(createArrayStr(3,1).join('')).toBe('111');
+  expect(createArrayStr(5,'a').join('-')).toBe('a-a-a-a-a')
+})
+
+it ('test getName(), getAge() && getGender()', () => {
+  const p2 = {
+    name: 'amanda',
+    age: 36,
+    gender: false,
+  };
+
+  expect(getName_G(p2)).toBe('amanda');
+  expect(getAge(p2)).toBe(36);
+  expect(getGender(p2)).toBe(false);
 })
 
 
